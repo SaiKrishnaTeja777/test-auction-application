@@ -1,0 +1,27 @@
+<div id="main">
+<div id="right_part"><div id="welcome">Welcome <%= cookies[:username]%></div></div>
+<div id="bloc2">
+<%= button_to "Log off", {:controller => :logoff, :action => :index},{id:"left_part",class: "pos2"} %>
+</div></div>
+
+<h1 class = "head2">Your Biddings!! </h1>
+
+<div id="table1div"><%= render 'biddings_table' %></div>
+<hr class="line">
+<div id="main1">
+<div id="right_part1"><h1 class="head3">Your Sales: </h1></div>
+<div id="bloc4">
+<%= button_to "Add Auction", {:controller => :forms, :action => :add_auction},{id:"left_part1",class: "pos4"} %>
+</div></div>
+<br/>
+<br/>
+<div id="table2div"><%= render 'sales_table' %></div>
+
+<hr class = "line">
+<h1 class = "head4">Available Auctions: </h1>
+<div id="table3div"><%= render 'auctions_table' %></div>
+
+<hr class = "line">
+<p class = "cpr"> Copyright © 2016 eBay Inc.All Rights Reserved<p>
+</div>
+

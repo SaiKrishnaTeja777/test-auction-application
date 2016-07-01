@@ -1,0 +1,9 @@
+
+
+	<%= form_tag({action: 'evaluate', method: "post"}, {class: "margin"}) do %>
+  			<%= label_tag(:user, "Username:", class:'head2 weight') %>
+  			<%= text_field_tag(:user) %>
+  			<%= submit_tag("Logon", id:'style2', class: 'pos2') %><br/>
+  			<span class="ll1"><%= notice %></span>
+		<% end %>
+	

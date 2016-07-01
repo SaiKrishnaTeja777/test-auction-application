@@ -1,0 +1,37 @@
+<table id = "table1" class= "width"> 
+	<tr class = "table">
+		<th>Description</th> 
+		<th>Seller</th> 
+		<th>End Date</th>
+		<th>Status</th> 
+		<th>Initial Bid</th> 
+		<th>Your bid</th> 
+		<th class="size">Increase Bid ?</th>	
+		<th>IsTopBidder</th>
+	</tr>
+	<% if @bids.blank? %>
+	<tr><td colspan = "8" class="si ll1"><strong><%= "You don't have any Biddings!!" %></strong></td></tr>
+	<% else %>
+	<% @bids.each do |record| %>
+	<tr>
+	<td><%= record.auction.item_name %></td>
+	<td><%= record.auction.seller %></td>
+	<td><%= record.auction.end_date %></td>
+	<td><%= record.auction.status %></td>
+	<td><%= record.auction.initial_bid %></td>
+  	<td><%= record.bid %></td>
+  	<% if(record.auction.status=='Open') %>
+  	<td>
+  	<div style="float:left;margin-left:12px">
+  	<%= text_field(:inc_bid, :new_bid, size: 4) %> </div>
+  	<%= button_to "Update", {:controller => :dashboard, :action => :index},{class: "pos1"}%>
+  	</td>
+  	<% else %>
+  	<td></td>
+  	<% end %>
+  	<td><%= @maxbid[record.auction.id] %></td>
+  	</tr>
+	<% end %>
+	<% end %>
+</table>
+

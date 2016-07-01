@@ -1,0 +1,55 @@
+    <% if !flash[:notice].blank? %>
+    <div class="center1">
+      <%= flash[:notice] %>
+    </div>
+    <% end %>
+  </div>
+<div style="width:1300px">
+
+  <div id="main">
+		<div id="right_part"><h1 class="center h1">Form to Add Auction</h1></div> 
+		<div id="left_part" >
+    <%= button_to "Go to Dashboard", {:controller => :dashboard, :action => :index},{class: "pos4"} %>
+    </div>
+
+
+  <div id="border">
+    <%= form_for :auction, url: {action: "create"} do |f| %>
+      <table>
+        <tr>
+          <td valign="center" class="bg1" >
+            <%= f.label "Item Description *:", :class => 'size' %>
+          </td>
+          <td valign="center">
+            <%= f.text_field :item_name %><div id="fid" class="italic">Only 50 characters allowed</div>
+          </td>
+        </tr>
+        <tr>
+          <td valign="center">
+            <%= f.label "Sellar Name *:", :class => 'size' %>
+          </td>
+          <td valign="center">
+            <%= f.text_field :seller, :readonly => true%>
+           </td>
+        </tr>
+        <tr>
+          <td valign="center" class="bg1">
+            <%= f.label "Opening bid *:", :class => 'size' %>
+          </td>
+          <td valign="center">
+            <%= f.text_field :initial_bid, :class =>'field3' %><div id="f3t" class="italic">Note: enter value > 0</div>
+          </td>
+        </tr> 
+        <tr>
+          <td valign="center">
+            <%= f.label "Closing Date *:", :class => 'size' %>
+          </td>
+          <td valign="center">
+            <%= f.date_field :end_date %><div id="fdt" class="italic">Note: enter future date</div>
+          </td>
+        </tr>
+      </table>
+    <%= f.submit "Submit", :class =>'button' %>
+    <% end %>
+  </div>
+</div>

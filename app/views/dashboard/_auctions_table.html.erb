@@ -1,0 +1,27 @@
+<table id = "table3" class= "width"> 
+	<tr class = "table">  
+		<th>Description</th> 
+		<th>Seller</th> 
+		<th>Expiring On</th> 
+		<th>Initial Bid</th> 
+		<th>Top Bid</th> 
+		<th> Bid on this ?</th>
+	</tr>
+	<% if @avail_auction.blank? %>
+		<tr><td colspan = "6" class="si ll1"><strong><%= "You don't have any available Auctions!!" %></strong></td></tr>
+	<% else %>
+		<% @avail_auction.each do |record| %>
+				<tr>
+					<td><%= record.item_name %></td>
+					<td><%= record.seller %></td>
+					<td><%= record.end_date %></td>
+					<td><%= record.initial_bid %></td>
+					<td><%= @top_bid[record.id] %></td>
+					<td><div style="float:left;margin-left:24px">
+	  				<%= text_field(:inc_bid, :new_bid, size: 4) %> </div>
+	  				<%= button_to "Bid", {:controller => :dashboard, :action => :index},{class: "pos1"}%>
+	  				</td>
+				</tr>
+		<% end %>
+	<% end %>
+</table>
